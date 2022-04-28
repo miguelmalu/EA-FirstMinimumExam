@@ -1,6 +1,7 @@
 import { Message } from "./message";
 import { Rating } from "./rating";
 import { Activity } from "./activity";
+import { Mode } from "./mode";
 
 export class User {
     _id?: string;
@@ -17,6 +18,8 @@ export class User {
     activitiesOrganized?: Activity[];
     activities?: Activity[];
     messages?: Message[]; */
+    //mode?: Mode;
+    mode?: Mode;
     creationDate?: Date;
 
     constructor(name: string, surname: string, username:string, password: string, phone: string,

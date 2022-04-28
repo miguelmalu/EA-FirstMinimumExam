@@ -20,8 +20,8 @@ class ModeRoutes{
         }
     }
 
-    public async getModeByName(req: Request, res: Response) : Promise<void> {
-        const modeFound = await Mode.findOne({name: req.params.nameUser}).populate('username', 'name -_id');
+    public async getModeByName(req: Request, res: Response) : Promise<void> { //By Id
+        const modeFound = await Mode.findOne({username: req.params.nameUser}).populate('username', 'name -_id');
         if(modeFound == null){
             res.status(404).send("The mode doesn't exist!");
         }
@@ -38,13 +38,13 @@ class ModeRoutes{
 
         const user = await User.findById(username);
         console.log(user);
-        user.mode.push(newMode);
+        //user.mode.push(newMode);
         const userToUpdate = await User.findOneAndUpdate({ username: user.name }, { mode: user.mode});
 
         res.status(200).send('Mode added!');
     }
 
-    public async updateMode(req: Request, res: Response) : Promise<void> {        
+    public async updateMode(req: Request, res: Response) : Promise<void> { //By Id      
         console.log(req.body);
         const modeToUpdate = await Mode.findOneAndUpdate ({username: req.params.nameUser}, req.body);
         if(modeToUpdate == null){
@@ -55,7 +55,7 @@ class ModeRoutes{
         }
     }
 
-    public async deleteMode(req: Request, res: Response) : Promise<void> {
+    public async deleteMode(req: Request, res: Response) : Promise<void> { //By Id
         const modeToDelete = await Mode.findOneAndDelete ({username :req.params.nameUser}, req.body);
         if (modeToDelete == null){
             res.status(404).send("The mode doesn't exist!")
@@ -66,10 +66,10 @@ class ModeRoutes{
     } 
     routes(){
         this.router.get('/', this.getModes);
-        this.router.get('/:nameActivity', this.getModeByName);
+        this.router.get('/:nameUser', this.getModeByName);
         this.router.post('/', this.addMode);
-        this.router.put('/:nameActivity', this.updateMode);
-        this.router.delete('/:nameActivity', this.deleteMode);
+        this.router.put('/:nameUser', this.updateMode);
+        this.router.delete('/:nameUser', this.deleteMode);
     }
 }
 

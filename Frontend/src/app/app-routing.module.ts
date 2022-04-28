@@ -33,8 +33,9 @@ const routes: Routes = [
   { path: 'message-list-activity/:id', component: ListMessagesActivityComponent},
   { path: 'create-message', component: CreateMessageComponent},
   { path: 'list-messages', component: ListMessagesComponent},
-  { path: 'create-mode', component: CreateModeComponent},
   { path: 'list-modes', component: ListModesComponent},
+  { path: 'create-mode', component: CreateModeComponent},
+  { path: 'edit-mode/:username', component: CreateModeComponent},
   { path: '**', redirectTo: '', pathMatch: 'full'} // In case of a wrong URL, the code redirects to the main path
 ];
 

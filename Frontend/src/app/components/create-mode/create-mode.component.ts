@@ -41,43 +41,57 @@ export class CreateModeComponent implements OnInit {
 
   addMode() {
 
-    const mode: Mode = {
-      username: this.modeForm.get('username')?.value,
-      mode: this.modeForm.get('mode')?.value,
-    }
+    const newusername: string = this.modeForm.get('username')?.value;
+    this._userService.getUser(newusername).subscribe(data =>{
+      const user = data;
 
-    console.log(mode);
+      const mode: Mode = {
+        username: user,
+        mode: this.modeForm.get('mode')?.value,
+      }
 
-    if(this.username !== null){
-      // Edit mode
-      this._modeService.editMode(mode, this.username).subscribe(data => {
-        this.toastr.info('Mode successfully edited!', 'Mode edited');
-        this.router.navigate(['/']);
-      }, error => {
-        console.log(error);
-        this.modeForm.reset();
-      })
-    }
-    else {
-      // Add mode
       console.log(mode);
-      this._modeService.addMode(mode).subscribe(data => {
-        this.toastr.success('Mode successfully created!', 'Mode created');
-        this.router.navigate(['/']);
-      }, error => {
-        console.log(error);
-        this.modeForm.reset();
-      })
-    }
+
+      if(this.username !== null){
+        // Edit mode
+        this._userService.getUser(this.username).subscribe(data =>{
+          const olduser = data;
+          this._modeService.editMode(mode, olduser._id!).subscribe(data => {
+            this.toastr.info('Mode successfully edited!', 'Mode edited');
+            this.router.navigate(['/list-modes']);
+          }, error => {
+            console.log(error);
+            this.modeForm.reset();
+          })
+        })
+      }
+      else {
+        // Add mode
+        console.log(mode);
+        this._modeService.addMode(mode).subscribe(data => {
+          this.toastr.success('Mode successfully created!', 'Mode created');
+          this.router.navigate(['/list-modes']);
+        }, error => {
+          console.log(error);
+          this.modeForm.reset();
+        })
+      }
+    }, error => {
+      this.toastr.error("Please try again with another user that exists","Username not found")
+      console.log(error)
+    });
   }
 
   editMode() {
     if(this.username !== null) {
       this.title = 'Edit mode';
-      this._modeService.getMode(this.username).subscribe(data => {
-        this.modeForm.setValue({
-          username: data.username,
-          mode: data.mode,
+      this._userService.getUser(this.username).subscribe(data =>{
+        const user = data;
+        this._modeService.getMode(user._id!).subscribe(data => {
+          this.modeForm.setValue({
+            username: data.username.name,
+            mode: data.mode,
+          })
         })
       })
     }

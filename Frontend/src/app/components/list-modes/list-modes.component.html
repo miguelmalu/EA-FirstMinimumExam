@@ -10,17 +10,17 @@
                             <tr>
                                 <th scope="col">Username</th>
                                 <th scope="col">Mode</th>
-                                <th scope="col">Time Zone</th>
+                                <th scope="col">Time</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let mode of listModes">
-                                <td>{{mode.username}}</td>
+                                <td>{{mode.username.name}}</td>
                                 <td>{{mode.mode}}</td>
-                                <td>{{mode.timeZone}}</td>                               
+                                <td>{{mode.time}}</td>                               
                                 <td>
-                                    <i class="fa-solid fa-pen-to-square text-primary" [routerLink]="['/edit-mode',mode.username]"></i>
+                                    <i class="fa-solid fa-pen-to-square text-primary" [routerLink]="['/edit-mode',mode.username.name]"></i>
                                     <i (click)="deleteMode(mode.username.name)" class="fa-solid fa-trash text-danger"></i>
                                 </td>
                             </tr>

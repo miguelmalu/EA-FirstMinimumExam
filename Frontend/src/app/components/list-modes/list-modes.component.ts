@@ -36,12 +36,15 @@ export class ListModesComponent implements OnInit {
   deleteMode(nameUser: string){
     const confirmDelete = confirm("The Mode of "+nameUser+" will be deleted, do you want to continue?");
     if(confirmDelete===true){
-      this._modeService.deleteMode(nameUser).subscribe(data => {
-        this.toastr.success('Mode successfully deleted', 'Mode deleted');
-        this.getModes();
-      }, error => {
-        this.toastr.error("Mode can not be deleted, please try again","Error deleting mode");
-        console.log(error);
+      this._userService.getUser(nameUser).subscribe(data =>{
+        const user = data;
+        this._modeService.deleteMode(user._id!).subscribe(data => {
+          this.toastr.success('Mode successfully deleted', 'Mode deleted');
+          this.getModes();
+        }, error => {
+          this.toastr.error("Mode can not be deleted, please try again","Error deleting mode");
+          console.log(error);
+        })
       })
     }    
   }

@@ -16,7 +16,7 @@ export class ModeService {
     return this.http.get<Mode[]>(this.url);
   }
 
-  getMode(nameUser: string): Observable<Mode>{
+  getMode(nameUser: string): Observable<Mode>{ //Id
     return this.http.get<Mode>(this.url + "/" + nameUser);
   }
 
@@ -24,11 +24,11 @@ export class ModeService {
     return this.http.post(this.url, mode, {responseType: 'text'});
   }
 
-  editMode(mode: Mode, nameUser: string): Observable<string>{
+  editMode(mode: Mode, nameUser: string): Observable<string>{ //Id
     return this.http.put(this.url + "/" + nameUser, mode, {responseType: 'text'});
   }
 
-  deleteMode(nameUser: string): Observable<string>{
+  deleteMode(nameUser: string): Observable<string>{ //Id
     return this.http.delete(this.url + "/" + nameUser, {responseType: 'text'});
   }
 

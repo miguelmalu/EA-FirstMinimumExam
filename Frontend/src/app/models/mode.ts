@@ -4,7 +4,7 @@ export class Mode{
     _id?: string;
     username: User;
     mode: string;
-    timeZone?: Date;
+    time?: Date;
 
     constructor(username:User, mode:string){
         this.username = username;

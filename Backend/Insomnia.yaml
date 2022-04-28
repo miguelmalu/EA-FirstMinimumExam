@@ -1,29 +1,30 @@
 _type: export
 __export_format: 4
-__export_date: 2022-04-28T02:20:53.792Z
+__export_date: 2022-04-28T21:19:36.749Z
 __export_source: insomnia.desktop.app:v2022.2.1
 resources:
-  - _id: req_bc384012d7314a7c8b45991c239218bc
-    parentId: fld_394ba22e73ba484882d8915f2263d40d
-    modified: 1651112120925
-    created: 1651112120925
-    url: http://localhost:3000/api/auth/roles
-    name: Add Role
+  - _id: req_479f695405ea4c11b7a358976f6f2ac7
+    parentId: fld_298944b359514d8d9057bcda86336c03
+    modified: 1651180763041
+    created: 1651151547629
+    url: http://localhost:3000/api/modes
+    name: Add Mode
     description: ""
     method: POST
     body:
       mimeType: application/json
       text: |-
         {
-        	"name": "owner"
+        	 "username": "626abe869dcbfbd7a37ec691",
+           "mode": "Light"
         }
     parameters: []
     headers:
       - name: Content-Type
         value: application/json
-        id: pair_72098b7a018d4c6cae4ba639e139e5c8
+        id: pair_c5019c5486f945b7a11e9381c18c2163
     authentication: {}
-    metaSortKey: -1648928613246
+    metaSortKey: -1647345079043
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -32,15 +33,15 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: fld_394ba22e73ba484882d8915f2263d40d
+  - _id: fld_298944b359514d8d9057bcda86336c03
     parentId: wrk_30725d7a24e74553b738540b6d101bab
-    modified: 1651112120922
-    created: 1651112120922
-    name: Auth
+    modified: 1651151550917
+    created: 1651151547609
+    name: Modes
     description: ""
     environment: {}
     environmentPropertyOrder: null
-    metaSortKey: -1648928599780
+    metaSortKey: -1647709856292
     _type: request_group
   - _id: wrk_30725d7a24e74553b738540b6d101bab
     parentId: null
@@ -50,19 +51,19 @@ resources:
     description: ""
     scope: collection
     _type: workspace
-  - _id: req_5935c722a71047ad86d97319031f9286
-    parentId: fld_394ba22e73ba484882d8915f2263d40d
-    modified: 1651112120929
-    created: 1651112120929
-    url: http://localhost:3000/api/auth/roles
-    name: Get Roles
+  - _id: req_498ad291accb4991955fbd9a0b49b202
+    parentId: fld_298944b359514d8d9057bcda86336c03
+    modified: 1651151649845
+    created: 1651151547617
+    url: http://localhost:3000/api/modes
+    name: Get Modes
     description: ""
     method: GET
     body: {}
     parameters: []
     headers: []
     authentication: {}
-    metaSortKey: -1648928613196
+    metaSortKey: -1647345079030.5
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -71,28 +72,69 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_437223e5f18b4d90b073e26d50a8132c
-    parentId: fld_394ba22e73ba484882d8915f2263d40d
-    modified: 1651112120934
-    created: 1651112120934
-    url: localhost:3000/api/auth/login
-    name: Login
+  - _id: req_f711576eb8b2408db02ec361abc5da4e
+    parentId: fld_298944b359514d8d9057bcda86336c03
+    modified: 1651172561650
+    created: 1651151547625
+    url: http://localhost:3000/api/modes/626abe869dcbfbd7a37ec691
+    name: Get ModesByName
     description: ""
-    method: POST
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1647345079018
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e5070fe4765e495f83377146f03f7d25
+    parentId: fld_298944b359514d8d9057bcda86336c03
+    modified: 1651172710184
+    created: 1651151547640
+    url: http://localhost:3000/api/modes/626abe869dcbfbd7a37ec691
+    name: Update Mode
+    description: ""
+    method: PUT
     body:
       mimeType: application/json
       text: |-
         {
-        	"username": "mupikga",
-        	"password": "1234"
+        	"mode": "Dark"
         }
     parameters: []
     headers:
       - name: Content-Type
         value: application/json
-        id: pair_49b69341e4584483a122a67d430b0f9d
+        id: pair_db2d5aa9d1ea43bba639b105a2403ba0
     authentication: {}
-    metaSortKey: -1648928613146
+    metaSortKey: -1647345078993
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ab964ef181c04dcbb68e2193a75e4ee2
+    parentId: fld_298944b359514d8d9057bcda86336c03
+    modified: 1651172625600
+    created: 1651151547634
+    url: http://localhost:3000/api/modes/626abe869dcbfbd7a37ec691
+    name: Delete Mode
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1647345078943
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -103,7 +145,7 @@ resources:
     _type: request
   - _id: req_3555b4b9de824feeb02b4c5811d5f850
     parentId: fld_8413b105f14f447395f54af68c552ebe
-    modified: 1651112120828
+    modified: 1651163215204
     created: 1651112120828
     url: http://localhost:3000/api/users
     name: Add User
@@ -113,10 +155,10 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"name": "YourName2",
-        	"surname": "YourSurname2",
-        	"username": "YourUserName2",
-        	"password": "YourPassword2"
+        	"name": "Isidro",
+        	"surname": "Aba",
+        	"username": "isdru",
+        	"password": "1234"
         }
     parameters: []
     headers:
@@ -166,9 +208,9 @@ resources:
     _type: request
   - _id: req_d087b583d94f4424943869be876358b3
     parentId: fld_8413b105f14f447395f54af68c552ebe
-    modified: 1651112120823
+    modified: 1651180246285
     created: 1651112120823
-    url: http://localhost:3000/api/users/YourName
+    url: http://localhost:3000/api/users/Joel
     name: Get UserByName
     description: ""
     method: GET
@@ -187,9 +229,9 @@ resources:
     _type: request
   - _id: req_34ee0b41d61a4c43acf923e74d8693c3
     parentId: fld_8413b105f14f447395f54af68c552ebe
-    modified: 1651112120832
+    modified: 1651180378421
     created: 1651112120832
-    url: http://localhost:3000/api/users/YourName
+    url: http://localhost:3000/api/users/Joel
     name: Update User
     description: ""
     method: PUT
@@ -237,7 +279,7 @@ resources:
     _type: request
   - _id: req_45607b9149b34e7f999d9624aabe0ebf
     parentId: fld_f6c6974373b84162884a9c7f9e1ad27d
-    modified: 1651112120794
+    modified: 1651173981502
     created: 1651112120794
     url: http://localhost:3000/api/activities
     name: Add Activity
@@ -247,11 +289,11 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	 "name": "",
-           "description": "",
-        	 "organizer": "62389efc234b8d4369a8b2c1",
-           "language": "",
-        	 "location": ["",""]
+        	 "name": "Act1",
+           "description": "Nice",
+        	 "organizer": "Jose",
+           "language": "esp",
+        	 "location": ["castefa","gava"]
         }
     parameters: []
     headers:
@@ -331,9 +373,9 @@ resources:
     _type: request
   - _id: req_50a81f32f4d34b9096e13cefd07b4802
     parentId: fld_f6c6974373b84162884a9c7f9e1ad27d
-    modified: 1651112120788
+    modified: 1651176592006
     created: 1651112120788
-    url: http://localhost:3000/api/activities/YourName
+    url: http://localhost:3000/api/activities/Jose
     name: Get ActivitiesByName
     description: ""
     method: GET

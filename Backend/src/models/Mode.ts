@@ -1,9 +1,9 @@
 import {Schema, model} from 'mongoose';
 
-const UserSchema = new Schema({
-    username: [{type: Schema.Types.ObjectId, required:true, ref: 'User'}],
+const ModeSchema = new Schema({
+    username: {type: Schema.Types.ObjectId, required:true, ref: 'User'},
     mode: {type: String, required:true,},
-    timeZone: {type: Date, default:Date.UTC},
+    time: {type: Date, default:Date.now},
 });
 
-export default model('Mode', UserSchema);
+export default model('Mode', ModeSchema);
